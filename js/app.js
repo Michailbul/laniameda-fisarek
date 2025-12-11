@@ -80,21 +80,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Intersection Observer for Cinematic Reveals
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -30px 0px'
+        rootMargin: '0px 0px -50px 0px'
     };
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-reveal');
+                entry.target.classList.add('revealed');
                 revealObserver.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Initial setup for reveal elements - use CSS class instead of inline style
+    // Observe all reveal elements
     document.querySelectorAll('.reveal-on-scroll').forEach(el => {
-        el.classList.add('reveal-hidden');
         revealObserver.observe(el);
     });
 
@@ -402,11 +401,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Safety Fallback for Black Screen Issues ---
     setTimeout(() => {
-        document.querySelectorAll('.reveal-hidden').forEach(el => {
-            el.classList.remove('reveal-hidden');
-            el.classList.add('animate-reveal');
+        document.querySelectorAll('.reveal-on-scroll:not(.revealed)').forEach(el => {
+            el.classList.add('revealed');
         });
-    }, 2000);
+    }, 3000);
 
     // --- Variables Selection Logic ---
     const artOptions = document.querySelectorAll('.art-option');

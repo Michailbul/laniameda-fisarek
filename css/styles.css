@@ -44,27 +44,162 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Animations */
+/* ========================================
+   SCROLL REVEAL ANIMATIONS
+   ======================================== */
+
+/* Base keyframes */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(32px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.reveal-hidden {
-  opacity: 0;
-  transform: translateY(24px);
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.animate-reveal {
-  animation: fadeInUp 0.6s var(--ease-cinematic) forwards;
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll reveal base - elements start hidden */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-cinematic), transform 0.8s var(--ease-cinematic);
+}
+
+.reveal-on-scroll[data-reveal="left"] {
+  transform: translateX(-50px);
+}
+
+.reveal-on-scroll[data-reveal="right"] {
+  transform: translateX(50px);
+}
+
+.reveal-on-scroll[data-reveal="scale"] {
+  transform: scale(0.92);
+}
+
+.reveal-on-scroll[data-reveal="slide"] {
+  transform: translateY(60px);
+}
+
+/* Revealed state */
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Stagger classes for groups */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* ========================================
+   HERO SECTION ANIMATIONS
+   ======================================== */
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heroSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroLineExpand {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+}
+
+.hero-fade-in {
+  opacity: 0;
+  animation: heroFadeIn 0.8s var(--ease-cinematic) forwards;
+}
+
+.hero-slide-up {
+  opacity: 0;
+  animation: heroSlideUp 1s var(--ease-cinematic) forwards;
+}
+
+.hero-line-expand {
+  opacity: 0;
+  animation: heroLineExpand 1.2s var(--ease-cinematic) forwards;
+}
+
+/* Hero Stagger Delays */
+.hero-delay-1 { animation-delay: 0.1s; }
+.hero-delay-2 { animation-delay: 0.3s; }
+.hero-delay-3 { animation-delay: 0.5s; }
+.hero-delay-4 { animation-delay: 0.7s; }
+.hero-delay-5 { animation-delay: 0.9s; }
+.hero-delay-6 { animation-delay: 1.1s; }
 
 /* Stagger Delays */
 .delay-100 {
