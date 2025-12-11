@@ -3,7 +3,7 @@
     "rewrites": [
         {
             "source": "/lovedoesnothurt",
-            "destination": "/index.html"
+            "destination": "/presentation.html"
         },
         {
             "source": "/lovedoesnothurt/(.*)",

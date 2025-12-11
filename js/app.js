@@ -417,4 +417,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, 1500);
 
+    // --- Variables Selection Logic ---
+    const artOptions = document.querySelectorAll('.art-option');
+
+    artOptions.forEach(option => {
+        option.addEventListener('click', function () {
+            // Find container of siblings
+            const container = this.closest('.md\\:col-span-8') || this.parentElement;
+            if (!container) return;
+
+            // Remove active from siblings in this container
+            const siblings = container.querySelectorAll('.art-option');
+            siblings.forEach(sib => sib.classList.remove('active'));
+
+            // Add active to clicked
+            this.classList.add('active');
+        });
+    });
+
 });
