@@ -48,21 +48,22 @@ body {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(40px) scale(0.98);
-    filter: blur(4px);
+    transform: translateY(24px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
+    transform: translateY(0);
   }
 }
 
-.animate-reveal {
-  animation: fadeInUp 1.2s var(--ease-cinematic) forwards;
+.reveal-hidden {
   opacity: 0;
-  will-change: transform, opacity, filter;
+  transform: translateY(24px);
+}
+
+.animate-reveal {
+  animation: fadeInUp 0.6s var(--ease-cinematic) forwards;
 }
 
 /* Stagger Delays */
@@ -205,24 +206,7 @@ h6 {
 }
 
 /* Cinematic Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-    filter: blur(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-.animate-reveal {
-  opacity: 0;
-  animation: fadeInUp 1s var(--ease-out-expo) forwards;
-}
+/* Duplicate removed - using single definition above */
 
 /* Stagger Delays */
 .delay-100 {

@@ -79,26 +79,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Intersection Observer for Cinematic Reveals
     const observerOptions = {
-        threshold: 0.15, // Trigger when 15% visible
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px -30px 0px'
     };
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Add animation class
                 entry.target.classList.add('animate-reveal');
-                // Make visible (remove initial hidden state if applied via JS)
-                entry.target.style.opacity = '1';
                 revealObserver.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Initial setup for reveal elements
+    // Initial setup for reveal elements - use CSS class instead of inline style
     document.querySelectorAll('.reveal-on-scroll').forEach(el => {
-        el.style.opacity = '0'; // Hide initially
-        // Apply animate-reveal class ONLY when intersected
+        el.classList.add('reveal-hidden');
         revealObserver.observe(el);
     });
 
@@ -406,16 +402,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Safety Fallback for Black Screen Issues ---
     setTimeout(() => {
-        const hiddenElements = document.querySelectorAll('.animate-reveal, .reveal-on-scroll');
-        hiddenElements.forEach(el => {
-            const style = window.getComputedStyle(el);
-            if (style.opacity === '0' || style.opacity === '0.0') {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0) scale(1)';
-                el.style.filter = 'blur(0)';
-            }
+        document.querySelectorAll('.reveal-hidden').forEach(el => {
+            el.classList.remove('reveal-hidden');
+            el.classList.add('animate-reveal');
         });
-    }, 1500);
+    }, 2000);
 
     // --- Variables Selection Logic ---
     const artOptions = document.querySelectorAll('.art-option');
