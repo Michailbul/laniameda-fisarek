@@ -1,0 +1,33 @@
+{
+    "version": 2,
+    "rewrites": [
+        {
+            "source": "/lovedoesnothurt",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/lovedoesnothurt/(.*)",
+            "destination": "/$1"
+        }
+    ],
+    "headers": [
+        {
+            "source": "/(css|js|ep1|ep2|ep3|ep4|ep5|ep6|ep7|ep8|episode1)/(.*)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=31536000, immutable"
+                }
+            ]
+        },
+        {
+            "source": "/lovedoesnothurt/(css|js|ep1|ep2|ep3|ep4|ep5|ep6|ep7|ep8|episode1)/(.*)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=31536000, immutable"
+                }
+            ]
+        }
+    ]
+}

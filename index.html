@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisarek | Creative Treatment</title>
+
+    <!-- Fonts (Inter, Playfair Display, Michroma for SpaceX style) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Michroma&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        spacex: ['Michroma', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#000000',
+                        accent: {
+                            DEFAULT: '#E07850',
+                            light: '#F5A07A',
+                            dark: '#C85D3D',
+                        },
+                        zinc: {
+                            850: '#1f1f22',
+                            900: '#18181b',
+                            950: '#09090b',
+                        }
+                    },
+                    letterSpacing: {
+                        'cinema': '0.15em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- JSZip -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="antialiased selection:bg-accent/20 selection:text-accent-dark">
+
+    <!-- Navigation (Light Theme) -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-6 px-8 transition-all duration-500">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#"
+                class="text-xl md:text-2xl font-spacex tracking-tight text-white/90 hover:text-white transition-colors">
+                Laniameda
+            </a>
+
+            <div
+                class="hidden md:flex items-center space-x-10 text-xs font-medium tracking-cinema uppercase text-zinc-400">
+                <a href="#intro" class="hover:text-white transition-colors duration-300">Intro</a>
+                <a href="#episodes" class="hover:text-white transition-colors duration-300">Episodes</a>
+                <a href="#appendix" class="hover:text-white transition-colors duration-300">Concepts</a>
+                <a href="#conclusion" class="hover:text-white transition-colors duration-300">Direction</a>
+            </div>
+
+            <button id="menu-button" class="md:hidden text-white/60 hover:text-white transition-colors">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex items-center justify-center transition-all duration-500 opacity-0">
+        <button id="close-menu-button" class="absolute top-8 right-8 text-white/60 hover:text-white transition-colors">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <div class="flex flex-col items-center space-y-10 text-center">
+            <a href="#intro"
+                class="mobile-link text-4xl font-serif text-zinc-400 hover:text-white transition-colors">Intro</a>
+            <a href="#episodes"
+                class="mobile-link text-4xl font-serif text-zinc-400 hover:text-white transition-colors">Episodes</a>
+            <a href="#appendix"
+                class="mobile-link text-4xl font-serif text-zinc-400 hover:text-white transition-colors">Concepts</a>
+            <a href="#conclusion"
+                class="mobile-link text-4xl font-serif text-zinc-400 hover:text-white transition-colors">Direction</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="relative z-10">
+
+        <!-- HERO SECTION - Light Editorial Design -->
+        <section id="intro" class="min-h-screen relative">
+
+            <!-- Main Hero Content -->
+            <div class="max-w-6xl mx-auto px-6 md:px-12 pt-36 pb-24">
+
+                <!-- Section Label -->
+                <div class="animate-reveal mb-8">
+                    <span class="section-number">000 — Introduction</span>
+                </div>
+
+                <!-- Giant Headline -->
+                <div class="mb-16 animate-reveal stagger-1">
+                    <h1 class="headline-giant max-w-5xl">
+                        Creative <em class="serif-italic">Directions</em><br />
+                        for the AI Animations
+                    </h1>
+                </div>
+
+                <!-- Subheadline -->
+                <div class="max-w-2xl mb-12 animate-reveal stagger-2">
+                    <p class="text-xl md:text-2xl leading-relaxed font-light" style="color: var(--text-secondary);">
+                        Exploration of <strong class="font-medium" style="color: var(--text-primary);">styles</strong>,
+                        <strong class="font-medium" style="color: var(--text-primary);">concepts</strong>, and
+                        <strong class="font-medium" style="color: var(--text-primary);">storytelling</strong>
+                        for the documentary drama "Love doesn't hurt."
+                    </p>
+                </div>
+
+                <!-- Download Button -->
+                <div class="mb-20 animate-reveal stagger-2">
+                    <button id="download-all-btn"
+                        class="glass-button px-6 py-3 rounded-full flex items-center gap-3 text-sm uppercase tracking-widest text-white/80 hover:text-white transition-all group">
+                        <span>Download All Images</span>
+                        <i data-lucide="download" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
+                    </button>
+                    <div id="download-status" class="mt-2 text-xs text-zinc-500 hidden">Preparing zip...</div>
+                </div>
+
+                <!-- Goal -->
+                <div class="max-w-2xl mb-20 animate-reveal stagger-2">
+                    <div class="pl-6 border-l-2 border-accent-default">
+                        <p class="text-lg text-white/80 italic">
+                            "The goal of this presentation is to <span class="text-highlight-white">lock in the
+                                understanding of the style and correlate
+                                the visual relationships between B-roll episodes.</span>"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Horizontal Divider -->
+                <div class="w-full h-px mb-20 animate-reveal stagger-3" style="background: var(--border-light);"></div>
+
+            </div>
+
+            <!-- TABLE OF CONTENTS - Editorial List Style -->
+            <div id="toc" class="max-w-6xl mx-auto px-6 md:px-12 pb-32">
+
+                <!-- Two Column Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 animate-reveal stagger-4">
+
+                    <!-- Left Column: Label -->
+                    <div class="lg:col-span-4">
+                        <span class="section-number">001 — Contents</span>
+                        <h2 class="text-2xl md:text-3xl font-serif mt-6 mb-4" style="color: var(--text-primary);">What's
+                            Inside</h2>
+                        <p class="text-base leading-relaxed" style="color: var(--text-secondary);">
+                        </p>
+                    </div>
+
+                    <!-- Right Column: TOC List -->
+                    <div class="lg:col-span-8">
+                        <nav class="toc-editorial-list">
+
+                            <!-- Item 1 -->
+                            <a href="#guidelines" class="toc-item group">
+                                <span class="toc-number">01</span>
+                                <div class="toc-content">
+                                    <span class="toc-title">Review Guidelines</span>
+                                    <span class="toc-desc">What to focus on during review</span>
+                                </div>
+                                <svg class="toc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+
+                            <!-- Item 2 -->
+                            <a href="#episodes" class="toc-item group">
+                                <span class="toc-number">02</span>
+                                <div class="toc-content">
+                                    <span class="toc-title">Episode Previews</span>
+                                    <span class="toc-desc">Visual direction options for a few episodes</span>
+                                </div>
+                                <svg class="toc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+
+                            <!-- Item 3 -->
+                            <a href="#appendix" class="toc-item group">
+                                <span class="toc-number">03</span>
+                                <div class="toc-content">
+                                    <span class="toc-title">CharacterConcept Art Style</span>
+                                    <span class="toc-desc">Abstract vs. realistic identity</span>
+                                </div>
+                                <svg class="toc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+
+                            <!-- Item 4 -->
+                            <a href="#conclusion" class="toc-item group">
+                                <span class="toc-number">04</span>
+                                <div class="toc-content">
+                                    <span class="toc-title">Strategic Directions</span>
+                                    <span class="toc-desc">Four proposed creative paths</span>
+                                </div>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- REVIEW GUIDELINES Section - Light Theme -->
+        <section id="guidelines" class="py-32 px-6 md:px-12">
+            <div class="max-w-6xl mx-auto">
+
+                <!-- Section Header -->
+                <div class="mb-16 reveal-on-scroll">
+                    <span class="section-number">002 — Guidelines</span>
+                    <h2 class="text-4xl md:text-5xl font-serif mt-6 mb-6" style="color: var(--text-primary);">What to
+                        Evaluate</h2>
+                    <p class="text-lg max-w-2xl font-light" style="color: var(--text-secondary);">Focus on creative
+                        direction. Ignore technical polish for now.</p>
+                </div>
+
+                <!-- Horizontal Divider -->
+                <div class="w-full h-px mb-16 reveal-on-scroll" style="background: var(--border-light);"></div>
+
+                <!-- Two Column Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 reveal-on-scroll">
+
+                    <!-- Focus On -->
+                    <div>
+                        <div class="flex items-start gap-4 mb-8">
+                            <div class="accent-bar"></div>
+                            <div>
+                                <h3 class="text-2xl font-serif mb-2" style="color: var(--text-primary);">Focus On</h3>
+                                <p class="text-sm" style="color: var(--text-muted);">Key areas requiring your feedback
+                                </p>
+                            </div>
+                        </div>
+                        <ul class="space-y-5 pl-1">
+                            <li class="flex items-start gap-4">
+                                <span class="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
+                                    style="background: var(--accent-coral);"></span>
+                                <span style="color: var(--text-primary);">Color palette and overall mood</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
+                                    style="background: var(--accent-coral);"></span>
+                                <span style="color: var(--text-primary);">Camera angles and framing choices</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
+                                    style="background: var(--accent-coral);"></span>
+                                <span style="color: var(--text-primary);">Storytelling elements and narrative
+                                    impact</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
+                                    style="background: var(--accent-coral);"></span>
+                                <span style="color: var(--text-primary);">"Is this scene worth developing
+                                    further?"</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
+                                    style="background: var(--accent-coral);"></span>
+                                <span style="color: var(--text-primary);">"Art direction and animation style"</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Ignore For Now -->
+                    <div>
+                        <div class="flex items-start gap-4 mb-8">
+                            <div class="accent-bar" style="opacity: 0.3;"></div>
+                            <div>
+                                <h3 class="text-2xl font-serif mb-2" style="color: var(--text-secondary);">Ignore For
+                                    Now</h3>
+                                <p class="text-sm" style="color: var(--text-muted);">These will be addressed in
+                                    production</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-5 pl-1">
+                            <li class="flex items-start gap-4" style="color: var(--text-muted);">
+                                <span class="mt-2 w-1.5 h-1.5 bg-zinc-300 rounded-full shrink-0"></span>
+                                <span class="line-through">Minor consistency between shots</span>
+                            </li>
+                            <li class="flex items-start gap-4" style="color: var(--text-muted);">
+                                <span class="mt-2 w-1.5 h-1.5 bg-zinc-300 rounded-full shrink-0"></span>
+                                <span class="line-through">Final polish and refinement</span>
+                            </li>
+                            <li class="flex items-start gap-4" style="color: var(--text-muted);">
+                                <span class="mt-2 w-1.5 h-1.5 bg-zinc-300 rounded-full shrink-0"></span>
+                                <span class="line-through">Technical artifacts (these are iteratable)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Episodes Section - Light Theme -->
+        <section id="episodes" class="py-32 px-6 md:px-12">
+            <div class="max-w-7xl mx-auto space-y-40">
+
+                <!-- Episode 1 -->
+                <div class="reveal-on-scroll group">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                        <div class="lg:col-span-4 space-y-6 sticky top-32">
+                            <span class="section-number">Episode 01</span>
+                            <h2 class="text-4xl md:text-5xl font-serif" style="color: var(--text-primary);">Relationship
+                                Origin</h2>
+                            <p class="text-lg font-light leading-relaxed" style="color: var(--text-secondary);">
+                                The Honeymoon Phase. Colorful and radiant?
+                            </p>
+                            <div class="carousel-scroll-hint">
+                                Scroll <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </div>
+                        </div>
+
+                        <!-- Horizontal Scroll Gallery for Episode 1 -->
+                        <div
+                            class="lg:col-span-8 overflow-x-auto pb-8 snap-x snap-mandatory flex gap-6 scroll-smooth hide-scrollbar p-2">
+
+                            <!-- Image 1 -->
+                            <div class="snap-center shrink-0 w-[80vw] md:w-[600px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                data-zoom-src="episode1/1.png">
+                                <div class="aspect-video relative">
+                                    <img src="episode1/1.png" alt="Ep1 Shot 1"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                        <span class="text-white font-serif italic text-lg">The Beginning</span>
+                                    </div>
+                                </div>
+                                <a href="episode1/1.png" download
+                                    class="absolute bottom-4 right-4 bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-zinc-200 z-20 pointer-events-auto">
+                                    Download
+                                </a>
+                            </div>
+
+                            <!-- Image 2 -->
+                            <div class="snap-center shrink-0 w-[80vw] md:w-[600px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                data-zoom-src="episode1/2.png">
+                                <div class="aspect-video relative">
+                                    <img src="episode1/2.png" alt="Ep1 Shot 2"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                </div>
+                                <a href="episode1/2.png" download
+                                    class="absolute bottom-4 right-4 bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-zinc-200 z-20 pointer-events-auto">
+                                    Download
+                                </a>
+                            </div>
+
+                            <!-- Image 3 -->
+                            <div class="snap-center shrink-0 w-[80vw] md:w-[600px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                data-zoom-src="episode1/3.png">
+                                <div class="aspect-video relative">
+                                    <img src="episode1/3.png" alt="Ep1 Shot 3"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                </div>
+                                <a href="episode1/3.png" download
+                                    class="absolute bottom-4 right-4 bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-zinc-200 z-20 pointer-events-auto">
+                                    Download
+                                </a>
+                            </div>
+
+                            <!-- Image 4 -->
+                            <div class="snap-center shrink-0 w-[80vw] md:w-[600px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                data-zoom-src="episode1/4.png">
+                                <div class="aspect-video relative">
+                                    <img src="episode1/4.png" alt="Ep1 Shot 4"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                </div>
+                                <a href="episode1/4.png" download
+                                    class="absolute bottom-4 right-4 bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-zinc-200 z-20 pointer-events-auto">
+                                    Download
+                                </a>
+                            </div>
+
+                            <!-- Image 5 -->
+                            <div class="snap-center shrink-0 w-[80vw] md:w-[600px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                data-zoom-src="episode1/5.png">
+                                <div class="aspect-video relative">
+                                    <img src="episode1/5.png" alt="Ep1 Shot 5"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                </div>
+                                <a href="episode1/5.png" download
+                                    class="absolute bottom-4 right-4 bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-zinc-200 z-20 pointer-events-auto">
+                                    Download
+                                </a>
+                            </div>
+
+                            <!-- Image 6 -->
+                            <div class="snap-center shrink-0 w-[80vw] md:w-[600px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                data-zoom-src="episode1/6.png">
+                                <div class="aspect-video relative">
+                                    <img src="episode1/6.png" alt="Ep1 Shot 6"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                </div>
+                                <a href="episode1/6.png" download
+                                    class="absolute bottom-4 right-4 bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-zinc-200 z-20 pointer-events-auto">
+                                    Download
+                                </a>
+                            </div>
+
+                            <!-- Image 7 -->
+                            <div class="snap-center shrink-0 w-[80vw] md:w-[600px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                data-zoom-src="episode1/7.png">
+                                <div class="aspect-video relative">
+                                    <img src="episode1/7.png" alt="Ep1 Shot 7"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                </div>
+                                <a href="episode1/7.png" download
+                                    class="absolute bottom-4 right-4 bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-zinc-200 z-20 pointer-events-auto">
+                                    Download
+                                </a>
+                            </div>
+
+                            <!-- Image 8 -->
+                            <div class="snap-center shrink-0 w-[80vw] md:w-[600px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                data-zoom-src="episode1/8.png">
+                                <div class="aspect-video relative">
+                                    <img src="episode1/8.png" alt="Ep1 Shot 8"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                </div>
+                                <a href="episode1/8.png" download
+                                    class="absolute bottom-4 right-4 bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-zinc-200 z-20 pointer-events-auto">
+                                    Download
+                                </a>
+                            </div>
+
+                            <!-- Image 9 -->
+                            <div class="snap-center shrink-0 w-[80vw] md:w-[600px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                data-zoom-src="episode1/9.png">
+                                <div class="aspect-video relative">
+                                    <img src="episode1/9.png" alt="Ep1 Shot 9"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                </div>
+                                <a href="episode1/9.png" download
+                                    class="absolute bottom-4 right-4 bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-zinc-200 z-20 pointer-events-auto">
+                                    Download
+                                </a>
+                            </div>
+
+                            <!-- Image 10 -->
+                            <div class="snap-center shrink-0 w-[80vw] md:w-[600px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                data-zoom-src="episode1/10.png">
+                                <div class="aspect-video relative">
+                                    <img src="episode1/10.png" alt="Ep1 Shot 10"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                </div>
+                                <a href="episode1/10.png" download
+                                    class="absolute bottom-4 right-4 bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-zinc-200 z-20 pointer-events-auto">
+                                    Download
+                                </a>
+                            </div>
+
+                            <!-- Image 11 -->
+                            <div class="snap-center shrink-0 w-[80vw] md:w-[600px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                data-zoom-src="episode1/11.png">
+                                <div class="aspect-video relative">
+                                    <img src="episode1/11.png" alt="Ep1 Shot 11"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                </div>
+                                <a href="episode1/11.png" download
+                                    class="absolute bottom-4 right-4 bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-zinc-200 z-20 pointer-events-auto">
+                                    Download
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode 2 - Deep Dive (The Cliff Scene) -->
+                <div class="reveal-on-scroll">
+
+                    <!-- Episode Header -->
+                    <div class="mb-16">
+                        <span class="section-number">Episode 02</span>
+                        <h2 class="text-4xl md:text-5xl font-serif mt-6 mb-6" style="color: var(--text-primary);">Deep
+                            Dive</h2>
+                        <p class="text-xl-readable max-w-2xl">
+                            The Cliff Scene
+                            We're exploring <strong>three distinct visual approaches</strong> for this pivotal moment.
+                        </p>
+                    </div>
+
+                    <!-- Style 1: Original Style -->
+                    <div class="style-section">
+                        <div class="style-section-header">
+                            <div>
+                                <span class="label-badge mb-4">Style A</span>
+                                <h3 class="style-section-title mt-4">Original Style</h3>
+                                <p class="style-section-subtitle">Illustrated, painterly approach</p>
+                            </div>
+                        </div>
+
+                        <!-- Shotlist Large Display -->
+                        <div class="shotlist-container mb-8">
+                            <div class="shotlist-label">
+                                <span class="text-sm font-semibold uppercase tracking-wider"
+                                    style="color: var(--text-primary);">Shotlist Overview</span>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="style-gallery-item" data-zoom-src="ep2/ep2-originalstyle/shotlist-1.png">
+                                    <img src="ep2/ep2-originalstyle/shotlist-1.png" alt="Shotlist 1"
+                                        class="shotlist-image">
+                                </div>
+                                <div class="style-gallery-item" data-zoom-src="ep2/ep2-originalstyle/shotlist-2.png">
+                                    <img src="ep2/ep2-originalstyle/shotlist-2.png" alt="Shotlist 2"
+                                        class="shotlist-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Style 2: Alternative Styles -->
+                    <div class="style-section">
+                        <div class="style-section-header">
+                            <div>
+                                <span class="label-badge--coral label-badge mb-4">Style B</span>
+                                <h3 class="style-section-title mt-4">Alternative Styles</h3>
+                                <p class="style-section-subtitle">Experimental visual treatments</p>
+                            </div>
+                        </div>
+
+
+                        <!-- Horizontal Scroll Gallery for Alternative Styles -->
+                        <div class="carousel-container group">
+                            <div
+                                class="overflow-x-auto pb-8 snap-x snap-mandatory flex gap-6 scroll-smooth hide-scrollbar p-2">
+                                <!-- Image 1 -->
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep2/ep2-alternativestyles/weavy-2025-12-10 at 22.18.13.png">
+                                    <div class="aspect-video relative">
+                                        <img src="ep2/ep2-alternativestyles/weavy-2025-12-10 at 22.18.13.png"
+                                            alt="Alternative Style 1"
+                                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                                    </div>
+                                </div>
+                                <!-- Image 2 -->
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep2/ep2-alternativestyles/weavy-2025-12-10 at 22.18.25.png">
+                                    <div class="aspect-video relative">
+                                        <img src="ep2/ep2-alternativestyles/weavy-2025-12-10 at 22.18.25.png"
+                                            alt="Alternative Style 2"
+                                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                                    </div>
+                                </div>
+                                <!-- Image 3 -->
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep2/ep2-alternativestyles/weavy-2025-12-10 at 22.18.28.png">
+                                    <div class="aspect-video relative">
+                                        <img src="ep2/ep2-alternativestyles/weavy-2025-12-10 at 22.18.28.png"
+                                            alt="Alternative Style 3"
+                                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                                    </div>
+                                </div>
+                                <!-- Image 4 -->
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep2/ep2-alternativestyles/weavy-2025-12-10 at 22.18.30.png">
+                                    <div class="aspect-video relative">
+                                        <img src="ep2/ep2-alternativestyles/weavy-2025-12-10 at 22.18.30.png"
+                                            alt="Alternative Style 4"
+                                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                                    </div>
+                                </div>
+                                <!-- Image 5 -->
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep2/ep2-alternativestyles/weavy-2025-12-10 at 22.18.34.png">
+                                    <div class="aspect-video relative">
+                                        <img src="ep2/ep2-alternativestyles/weavy-2025-12-10 at 22.18.34.png"
+                                            alt="Alternative Style 5"
+                                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                                    </div>
+                                </div>
+                                <!-- Image 6 -->
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep2/ep2-alternativestyles/weavy-2025-12-10 at 22.18.36.png">
+                                    <div class="aspect-video relative">
+                                        <img src="ep2/ep2-alternativestyles/weavy-2025-12-10 at 22.18.36.png"
+                                            alt="Alternative Style 6"
+                                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                                    </div>
+                                </div>
+                                <!-- Image 7 -->
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep2/ep2-alternativestyles/weavy-2025-12-10 at 22.18.38.png">
+                                    <div class="aspect-video relative">
+                                        <img src="ep2/ep2-alternativestyles/weavy-2025-12-10 at 22.18.38.png"
+                                            alt="Alternative Style 7"
+                                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                                    </div>
+                                </div>
+                                <!-- Image 8 -->
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep2/ep2-alternativestyles/weavy-Gemini 3 (Nano Banana Pro)-2025-12-10 at 22.19.17.png">
+                                    <div class="aspect-video relative">
+                                        <img src="ep2/ep2-alternativestyles/weavy-Gemini 3 (Nano Banana Pro)-2025-12-10 at 22.19.17.png"
+                                            alt="Alternative Style 8"
+                                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-fade-mask"></div>
+                            <div class="carousel-scroll-hint">
+                                Scroll <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Style 3: Realism -->
+                    <div class="style-section">
+                        <div class="style-section-header">
+                            <div>
+                                <span class="label-badge--outline label-badge mb-4">Style C</span>
+                                <h3 class="style-section-title mt-4">Hyper-Realistic Approach</h3>
+                                <p class="style-section-subtitle">Photorealistic rendering with dramatic lighting</p>
+                            </div>
+                        </div>
+
+                        <!-- Shotlist Large Display for Realism -->
+                        <div class="shotlist-container mb-8">
+                            <div class="shotlist-label">
+                                <span class="text-sm font-semibold uppercase tracking-wider"
+                                    style="color: var(--text-primary);">Realism Shotlist</span>
+                            </div>
+                            <div class="style-gallery-item" data-zoom-src="ep2/ep2-realism/shotlist.png">
+                                <img src="ep2/ep2-realism/shotlist.png" alt="Realism Shotlist" class="shotlist-image">
+                            </div>
+                        </div>
+
+
+                        <!-- Horizontal Scroll Gallery for Realism -->
+                        <div class="carousel-container group">
+                            <div
+                                class="overflow-x-auto pb-8 snap-x snap-mandatory flex gap-6 scroll-smooth hide-scrollbar p-2">
+                                <!-- Image 1 -->
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep2/ep2-realism/weavy-2025-12-10 at 22.20.15.png">
+                                    <div class="aspect-video relative">
+                                        <img src="ep2/ep2-realism/weavy-2025-12-10 at 22.20.15.png" alt="Realism 1"
+                                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                                    </div>
+                                </div>
+                                <!-- Image 2 -->
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep2/ep2-realism/weavy-2025-12-10 at 22.20.58.png">
+                                    <div class="aspect-video relative">
+                                        <img src="ep2/ep2-realism/weavy-2025-12-10 at 22.20.58.png" alt="Realism 2"
+                                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                                    </div>
+                                </div>
+                                <!-- Image 3 -->
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep2/ep2-realism/weavy-2025-12-10 at 22.21.01.png">
+                                    <img src="ep2/ep2-realism/weavy-2025-12-10 at 22.21.18.png" alt="Realism 6">
+                                </div>
+                                <div class="style-gallery-item"
+                                    data-zoom-src="ep2/ep2-realism/weavy-2025-12-10 at 22.24.24.png">
+                                    <img src="ep2/ep2-realism/weavy-2025-12-10 at 22.24.24.png" alt="Realism 7">
+                                </div>
+                                <div class="style-gallery-item"
+                                    data-zoom-src="ep2/ep2-realism/weavy-Gemini 3 (Nano Banana Pro)-2025-12-10 at 22.21.29.png">
+                                    <img src="ep2/ep2-realism/weavy-Gemini 3 (Nano Banana Pro)-2025-12-10 at 22.21.29.png"
+                                        alt="Realism 8">
+                                </div>
+                            </div>
+                            <div class="carousel-fade-mask"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Episode 3 - Mountain Retreat -->
+                <div class="reveal-on-scroll group">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                        <div class="lg:col-span-4 space-y-6 sticky top-32">
+                            <span class="section-number">Episode 03</span>
+                            <h2 class="text-4xl md:text-5xl font-serif animated-header"
+                                style="color: var(--text-primary);">
+                                <span class="word">Mountain</span>
+                                <span class="word text-highlight-box">Retreat</span>
+                            </h2>
+                            <p class="text-lg font-light leading-relaxed" style="color: var(--text-secondary);">
+                                The escape to the mountains. A moment of false tranquility before the storm.
+                                Isolation amplifies. Trust erodes.
+                            </p>
+
+                            <!-- Style Tag -->
+                            <div class="pt-4">
+                                <span class="style-tag">Illustration</span>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Content -->
+                        <div class="lg:col-span-8 space-y-16">
+
+                            <!-- Illustration Carousel -->
+                            <div class="carousel-container group">
+                                <div id="ep3-illustration"
+                                    class="overflow-x-auto pb-8 snap-x snap-mandatory flex gap-6 scroll-smooth hide-scrollbar p-2">
+                                    <div class="snap-center shrink-0 w-[80vw] md:w-[500px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                        data-zoom-src="ep3/ep3-illustration/weavy-2025-12-11 at 00.12.16.png">
+                                        <div class="aspect-video relative">
+                                            <img src="ep3/ep3-illustration/weavy-2025-12-11 at 00.12.16.png"
+                                                class="w-full h-full object-cover">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                                <span class="text-white font-serif italic text-lg">Arrival at the
+                                                    Cabin</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="snap-center shrink-0 w-[80vw] md:w-[500px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                        data-zoom-src="ep3/ep3-illustration/weavy-2025-12-11 at 00.12.26.png">
+                                        <div class="aspect-video relative">
+                                            <img src="ep3/ep3-illustration/weavy-2025-12-11 at 00.12.26.png"
+                                                class="w-full h-full object-cover">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                                <span class="text-white font-serif italic text-lg">Isolation Sets
+                                                    In</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="snap-center shrink-0 w-[80vw] md:w-[500px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                        data-zoom-src="ep3/ep3-illustration/weavy-2025-12-11 at 00.12.28.png">
+                                        <div class="aspect-video relative">
+                                            <img src="ep3/ep3-illustration/weavy-2025-12-11 at 00.12.28.png"
+                                                class="w-full h-full object-cover">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                                <span class="text-white font-serif italic text-lg">The View</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="snap-center shrink-0 w-[80vw] md:w-[500px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                        data-zoom-src="ep3/ep3-illustration/weavy-2025-12-11 at 00.12.31.png">
+                                        <div class="aspect-video relative">
+                                            <img src="ep3/ep3-illustration/weavy-2025-12-11 at 00.12.31.png"
+                                                class="w-full h-full object-cover">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                                <span class="text-white font-serif italic text-lg">Silent Tension</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="snap-center shrink-0 w-[80vw] md:w-[500px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                        data-zoom-src="ep3/ep3-illustration/weavy-2025-12-11 at 00.12.33.png">
+                                        <div class="aspect-video relative">
+                                            <img src="ep3/ep3-illustration/weavy-2025-12-11 at 00.12.33.png"
+                                                class="w-full h-full object-cover">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                                <span class="text-white font-serif italic text-lg">Trapped Beauty</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="snap-center shrink-0 w-[80vw] md:w-[500px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                        data-zoom-src="ep3/ep3-illustration/weavy-2025-12-11 at 00.12.38.png">
+                                        <div class="aspect-video relative">
+                                            <img src="ep3/ep3-illustration/weavy-2025-12-11 at 00.12.38.png"
+                                                class="w-full h-full object-cover">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                                <span class="text-white font-serif italic text-lg">Contemplation</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="snap-center shrink-0 w-[80vw] md:w-[500px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                        data-zoom-src="ep3/ep3-illustration/weavy-2025-12-11 at 00.12.44.png">
+                                        <div class="aspect-video relative">
+                                            <img src="ep3/ep3-illustration/weavy-2025-12-11 at 00.12.44.png"
+                                                class="w-full h-full object-cover">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                                <span class="text-white font-serif italic text-lg">The Descent</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-fade-mask"></div>
+                                <div class="carousel-scroll-hint">
+                                    Scroll <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                                </div>
+                            </div>
+
+                            <!-- REALISM SECTION INTRO - Subgrid -->
+                            <div class="realism-dark-wrapper rounded-xl p-8 border border-white/10">
+                                <div class="mb-8">
+                                    <span class="label-badge--coral label-badge mb-2">Hyper-Realism Variant</span>
+                                    <h3 class="text-2xl font-serif text-white">Photorealistic Detail</h3>
+                                    <p class="text-white/60 text-sm mt-2">Compare how hyper-realism changes the
+                                        emotional impact.</p>
+                                </div>
+
+                                <!-- Vertical Gallery in the right column -->
+                                <div class="space-y-8">
+                                    <div class="w-full aspect-video rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative"
+                                        data-zoom-src="ep3/ep3-realism/weavy-2025-12-11 at 00.11.55.png">
+                                        <img src="ep3/ep3-realism/weavy-2025-12-11 at 00.11.55.png"
+                                            class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 flex items-end p-6">
+                                            <span class="text-white font-serif italic text-xl drop-shadow-md">Mountain
+                                                Vista</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative"
+                                            data-zoom-src="ep3/ep3-realism/1.png">
+                                            <img src="ep3/ep3-realism/1.png" class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative"
+                                            data-zoom-src="ep3/ep3-realism/weavy-2025-12-11 at 00.11.40.png">
+                                            <img src="ep3/ep3-realism/weavy-2025-12-11 at 00.11.40.png"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode Transition -->
+                <div class="episode-transition reveal-on-scroll">
+                    <div class="transition-line"></div>
+                    <div class="transition-dot"></div>
+                    <div class="transition-line"></div>
+                </div>
+
+                <!-- Episode 4 - Surveillance Scene -->
+                <div class="reveal-on-scroll group">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                        <div class="lg:col-span-4 space-y-6 sticky top-32">
+                            <span class="section-number">Episode 04</span>
+                            <h2 class="text-4xl md:text-5xl font-serif" style="color: var(--text-primary);">
+                                The <span class="text-highlight-box">Surveillance</span>
+                            </h2>
+                            <p class="text-lg font-light leading-relaxed" style="color: var(--text-secondary);">
+                                Scene of Simona being surveilled
+                                <strong class="text-white">by the camera.</strong>
+                            </p>
+
+                            <!-- Style Tag -->
+                            <div class="pt-4">
+                                <span id="ep4-style-tag"
+                                    class="style-tag transition-all duration-300">Illustration</span>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Content -->
+                        <div class="lg:col-span-8 space-y-12">
+
+                            <!-- Illustration Carousel -->
+                            <div id="ep4-illustration-trigger" class="carousel-container group">
+                                <div
+                                    class="overflow-x-auto pb-8 snap-x snap-mandatory flex gap-6 scroll-smooth hide-scrollbar p-2">
+                                    <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                        data-zoom-src="ep4/ep4-illustration/1.png">
+                                        <div class="aspect-video relative">
+                                            <img src="ep4/ep4-illustration/1.png" class="w-full h-full object-cover">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                                <span class="text-white font-serif italic text-lg">Digital Prison</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                        data-zoom-src="ep4/ep4-illustration/2.png">
+                                        <div class="aspect-video relative">
+                                            <img src="ep4/ep4-illustration/2.png" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                        data-zoom-src="ep4/ep4-illustration/3.png">
+                                        <div class="aspect-video relative">
+                                            <img src="ep4/ep4-illustration/3.png" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                        data-zoom-src="ep4/ep4-illustration/4.png">
+                                        <div class="aspect-video relative">
+                                            <img src="ep4/ep4-illustration/4.png" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="snap-center shrink-0 w-[80vw] md:w-[400px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                        data-zoom-src="ep4/ep4-illustration/5.png">
+                                        <div class="aspect-video relative">
+                                            <img src="ep4/ep4-illustration/5.png" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-fade-mask"></div>
+                                <div class="carousel-scroll-hint">
+                                    Scroll <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                                </div>
+                            </div>
+
+                            <!-- EP4 REALISM - SURVEILLANCE CONTROL ROOM -->
+                            <div id="ep4-realism-trigger"
+                                class="ep4-surveillance-wrapper border border-white/10 rounded-xl overflow-hidden p-6 relative">
+                                <div class="surveillance-scanlines"></div>
+
+                                <div class="flex items-center justify-between mb-6 relative z-10">
+                                    <div>
+                                        <h3
+                                            class="text-xl font-spacex text-white/90 uppercase tracking-widest flex items-center gap-3">
+                                            <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                                            Hyper-Realism
+                                        </h3>
+                                        <p class="text-xs text-white/40 uppercase tracking-wider mt-1">Live Feed •
+                                            CAM-01A</p>
+                                    </div>
+                                    <div class="text-xs font-mono text-red-500">REC ●</div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-2 relative z-10">
+                                    <div class="col-span-2 aspect-video bg-black rounded border border-white/10 relative overflow-hidden group cursor-pointer"
+                                        data-zoom-src="ep4/ep4-realism/1.png">
+                                        <img src="ep4/ep4-realism/1.png"
+                                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                                        <div
+                                            class="absolute top-2 left-2 text-[10px] font-mono text-white/60 bg-black/50 px-1">
+                                            CAM-MAIN</div>
+                                    </div>
+                                    <div class="aspect-video bg-black rounded border border-white/10 relative overflow-hidden group cursor-pointer"
+                                        data-zoom-src="ep4/ep4-realism/2.png">
+                                        <img src="ep4/ep4-realism/2.png"
+                                            class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity">
+                                    </div>
+                                    <div class="aspect-video bg-black rounded border border-white/10 relative overflow-hidden group cursor-pointer"
+                                        data-zoom-src="ep4/ep4-realism/3.png">
+                                        <img src="ep4/ep4-realism/3.png"
+                                            class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity">
+                                    </div>
+                                    <div class="aspect-video bg-black rounded border border-white/10 relative overflow-hidden group cursor-pointer"
+                                        data-zoom-src="ep4/ep4-realism/4.png">
+                                        <img src="ep4/ep4-realism/4.png"
+                                            class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity">
+                                    </div>
+                                    <div class="aspect-video bg-black rounded border border-white/10 relative overflow-hidden group cursor-pointer"
+                                        data-zoom-src="ep4/ep4-realism/5.png">
+                                        <img src="ep4/ep4-realism/5.png"
+                                            class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Episode 5 - Míša at Theater -->
+                <div class="reveal-on-scroll group">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                        <div class="lg:col-span-4 space-y-6 sticky top-32">
+                            <span class="section-number">Episode 05</span>
+                            <h2 class="text-4xl md:text-5xl font-serif" style="color: var(--text-primary);">
+                                Míša at the <span class="text-highlight-box">Theater</span>
+                            </h2>
+                            <p class="text-lg font-light leading-relaxed" style="color: var(--text-secondary);">
+                                A moment of stolen freedom. Art becomes refuge.
+                                <strong class="text-white">But even here, the shadows follow.</strong>
+                            </p>
+
+                            <!-- Style Tag -->
+                            <div class="pt-4">
+                                <span class="style-tag">Illustration</span>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Content -->
+                        <div class="lg:col-span-8 space-y-12">
+                            <div class="carousel-container group"></div>
+                            <div
+                                class="overflow-x-auto pb-8 snap-x snap-mandatory flex gap-6 scroll-smooth hide-scrollbar p-2">
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[450px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep5/1.png">
+                                    <div class="aspect-video relative">
+                                        <img src="ep5/1.png" class="w-full h-full object-cover">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                            <span class="text-white font-serif italic text-lg">The Stage</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[450px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep5/2.png">
+                                    <div class="aspect-video relative">
+                                        <img src="ep5/2.png" class="w-full h-full object-cover">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                            <span class="text-white font-serif italic text-lg">Audience</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[450px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep5/4.png">
+                                    <div class="aspect-video relative">
+                                        <img src="ep5/4.png" class="w-full h-full object-cover">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                            <span class="text-white font-serif italic text-lg">Escape</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="snap-center shrink-0 w-[80vw] md:w-[450px] rounded-lg overflow-hidden border border-white/10 group cursor-pointer relative shadow-sm"
+                                    data-zoom-src="ep5/5.png">
+                                    <div class="aspect-video relative">
+                                        <img src="ep5/5.png" class="w-full h-full object-cover">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                            <span class="text-white font-serif italic text-lg">Return</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-fade-mask"></div>
+                            <div class="carousel-scroll-hint">
+                                Scroll to Explore <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Episode 6 - Nightmare Scene -->
+                <div class="reveal-on-scroll group">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                        <div class="lg:col-span-4 space-y-6 sticky top-32">
+                            <span class="section-number">Episode 06</span>
+                            <h2 class="text-4xl md:text-5xl font-serif" style="color: var(--text-primary);">
+                                The <span class="text-highlight-box">Nightmare</span>
+                            </h2>
+                            <p class="text-lg font-light leading-relaxed" style="color: var(--text-secondary);">
+                                The dark episodes of family life.
+                                <strong class="text-white">Simon struggles as a kid.</strong>
+                            </p>
+                            <!-- Style Tag -->
+                            <div class="pt-4">
+                                <span class="style-tag">Surrealism, Concept Art</span>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Content -->
+                        <div class="lg:col-span-8">
+                            <!-- Custom Thumbnail Carousel Component -->
+                            <div class="ep6-gallery-wrapper w-full">
+                                <!-- Main View -->
+                                <div class="ep6-main-view mb-4 rounded-lg overflow-hidden border border-white/10 shadow-lg relative group aspect-video bg-white/5"
+                                    id="ep6-main-display" data-zoom-src="ep6/1.png">
+                                    <img src="ep6/1.png" alt="Nightmare Main View"
+                                        class="w-full h-full object-cover transition-opacity duration-300"
+                                        id="ep6-main-image">
+
+                                    <!-- Navigation Arrows (Overlay) -->
+                                    <button class="ep6-nav-btn ep6-prev"
+                                        onclick="event.stopPropagation(); changeEp6Slide(-1)">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M15 18l-6-6 6-6" />
+                                        </svg>
+                                    </button>
+                                    <button class="ep6-nav-btn ep6-next"
+                                        onclick="event.stopPropagation(); changeEp6Slide(1)">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M9 18l6-6-6-6" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Thumbnails Strip -->
+                                <div class="ep6-thumbnails-container">
+                                    <div class="ep6-thumbnails-track">
+                                        <!-- Thumb 1 -->
+                                        <button class="ep6-thumb active" onclick="setEp6Slide(0)"
+                                            aria-label="View slide 1">
+                                            <img src="ep6/1.png" alt="Thumb 1">
+                                        </button>
+                                        <!-- Thumb 2 -->
+                                        <button class="ep6-thumb" onclick="setEp6Slide(1)" aria-label="View slide 2">
+                                            <img src="ep6/2.png" alt="Thumb 2">
+                                        </button>
+                                        <!-- Thumb 3 -->
+                                        <button class="ep6-thumb" onclick="setEp6Slide(2)" aria-label="View slide 3">
+                                            <img src="ep6/3.png" alt="Thumb 3">
+                                        </button>
+                                        <!-- Thumb 4 -->
+                                        <button class="ep6-thumb" onclick="setEp6Slide(3)" aria-label="View slide 4">
+                                            <img src="ep6/4.png" alt="Thumb 4">
+                                        </button>
+                                        <!-- Thumb 5 -->
+                                        <button class="ep6-thumb" onclick="setEp6Slide(4)" aria-label="View slide 5">
+                                            <img src="ep6/6.png" alt="Thumb 5">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode 7 - The Blueprint (Shotlist) -->
+                <div
+                    class="reveal-on-scroll group bg-white/5 mx-[-1.5rem] md:mx-[-3rem] px-6 md:px-12 py-20 my-20 border-y border-white/5">
+                    <div class="max-w-6xl mx-auto">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                            <div class="lg:col-span-5 space-y-6">
+                                <span class="section-number">Episode 07</span>
+                                <h2 class="text-4xl md:text-5xl font-serif" style="color: var(--text-primary);">
+                                    The <span class="text-highlight-box bg-red-800">Murder</span>
+                                </h2>
+                                <p class="text-lg font-light leading-relaxed" style="color: var(--text-secondary);">
+                                    A rough reference of possible shots for the scene.
+                                    <br>Graphic warnings implied.
+                                </p>
+
+                                <div class="pt-8">
+                                    <div
+                                        class="inline-flex items-center gap-3 px-4 py-2 border border-red-900/30 rounded bg-red-900/10 text-red-400 text-xs uppercase tracking-widest">
+                                        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                                        Technical Shotlist
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Image Side (Right) -->
+                            <div class="lg:col-span-7">
+                                <div class="ep8-shotlist-container group relative transform transition-all duration-500 hover:scale-[1.02]"
+                                    data-zoom-src="ep8/shotlist.png">
+                                    <div class="shotlist-frame border border-white/20 rounded shadow-2xl">
+                                        <img src="ep8/shotlist.png" alt="Episode 7 Shotlist"
+                                            class="w-full h-auto block">
+                                        <div class="shotlist-overlay">
+                                            <span class="icon-zoom">VIEW SHOTLIST</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode 8 - The Murder (Aligned Row) - Character Directions -->
+                <div class="reveal-on-scroll group pb-32">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                        <div class="lg:col-span-4 space-y-6 sticky top-32">
+                            <span class="section-number">Creative Exploration</span>
+                            <h2 class="text-4xl md:text-5xl font-serif" style="color: var(--text-primary);">
+                                Character <span class="text-highlight-box bg-red-800">Directions</span>
+                            </h2>
+                            <p class="text-lg font-light leading-relaxed" style="color: var(--text-secondary);">
+                                <strong>Faceless/vague characters as abstract concept art?</strong>
+                            </p>
+                            <div class="pt-4">
+                                <span class="style-tag">Fractured Reality</span>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Content -->
+                        <div class="lg:col-span-8">
+                            <div class="carousel-container group">
+                                <div
+                                    class="overflow-x-auto pb-8 snap-x snap-mandatory flex gap-6 scroll-smooth hide-scrollbar p-2">
+                                    <div class="snap-center shrink-0 w-[300px] md:w-[400px] rounded-lg overflow-hidden border border-white/10 cursor-zoom-in group"
+                                        data-zoom-src="ep7/im1-16-9.png">
+                                        <img src="ep7/im1-16-9.png"
+                                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    </div>
+                                    <div class="snap-center shrink-0 w-[300px] md:w-[400px] rounded-lg overflow-hidden border border-white/10 cursor-zoom-in group"
+                                        data-zoom-src="ep7/im2-16-9.png">
+                                        <img src="ep7/im2-16-9.png"
+                                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    </div>
+                                    <div class="snap-center shrink-0 w-[300px] md:w-[400px] rounded-lg overflow-hidden border border-white/10 cursor-zoom-in group"
+                                        data-zoom-src="ep7/im5-16-9.png">
+                                        <img src="ep7/im5-16-9.png"
+                                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    </div>
+                                    <div class="snap-center shrink-0 w-[300px] md:w-[400px] rounded-lg overflow-hidden border border-white/10 cursor-zoom-in group"
+                                        data-zoom-src="ep7/im3-16-9.png">
+                                        <img src="ep7/im3-16-9.png"
+                                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    </div>
+                                </div>
+                                <div class="carousel-fade-mask"></div>
+                                <div class="carousel-scroll-hint">
+                                    Scroll to Explore <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONCLUSION: THE PROPOSAL -->
+                <div class="conclusion-section pb-48 reveal-on-scroll">
+                    <div class="max-w-5xl mx-auto px-6 md:px-12">
+                        <!-- Editorial Header -->
+                        <div class="editorial-header mb-32 relative">
+                            <!-- Small Accent Line -->
+                            <div class="w-12 h-[2px] bg-accent-coral mb-6"></div>
+
+                            <span class="text-xs font-bold tracking-[0.25em] uppercase text-white mb-6 block">The
+                                Decision</span>
+                            <h2 class="text-6xl md:text-8xl font-serif text-white mb-10 leading-none tracking-tight">
+                                Proposed<br>Directions
+                            </h2>
+                            <p class="text-xl md:text-2xl text-white/60 font-light max-w-2xl leading-relaxed">
+                                Four distinct paths for the visual evolution of the series.
+                            </p>
+                        </div>
+
+                        <!-- Direction List Redesign -->
+                        <div class="directions-list-container space-y-2">
+
+                            <!-- Row 01 -->
+                            <div class="direction-row dir-1 group cursor-pointer">
+                                <div class="direction-row-number">01</div>
+                                <div class="direction-row-content">
+                                    <h3 class="direction-row-title">Evolving Style Arc</h3>
+                                    <p class="direction-row-desc">
+                                        Begins with vibrant color animation, gradually desaturating into high-contrast
+                                        realistic B&W as the drama intensifies.
+                                        <span class="direction-meta">Metaphor: Example of a dream decaying into brutal
+                                            reality.</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Row 02 -->
+                            <div class="direction-row dir-2 group cursor-pointer">
+                                <div class="direction-row-number">02</div>
+                                <div class="direction-row-content">
+                                    <h3 class="direction-row-title">Style Diversity</h3>
+                                    <p class="direction-row-desc">
+                                        A distinct visual style for every major scene. Faces remain hidden, but
+                                        character identity is preserved through unique silhouettes and motifs.
+                                        <span class="direction-meta">Metaphor: Fragmentation of memory and
+                                            perception.</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Row 03 -->
+                            <div class="direction-row dir-3 group cursor-pointer">
+                                <div class="direction-row-number">03</div>
+                                <div class="direction-row-content">
+                                    <h3 class="direction-row-title">Realism Focus</h3>
+                                    <p class="direction-row-desc">
+                                        Consistent hyper-realistic rendering. Simona's face is shown to anchor emotion,
+                                        while Boris remains an unseen, looming presence.
+                                        <span class="direction-meta">Metaphor: The invisible threat vs. the visible
+                                            victim.</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Row 04 -->
+                            <div class="direction-row dir-4 group cursor-pointer">
+                                <div class="direction-row-number">04</div>
+                                <div class="direction-row-content">
+                                    <h3 class="direction-row-title">Concept Art Style</h3>
+                                    <p class="direction-row-desc">
+                                        A committed artistic sketch style throughout. Faceless, vague, and abstract
+                                        characters living in a world of emotional impressionism.
+                                        <span class="direction-meta">Metaphor: Emotional distance and universality of
+                                            trauma.</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="py-32 reveal-on-scroll relative">
+                <div
+                    class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent">
+                </div>
+                <div class="max-w-5xl mx-auto px-6">
+                    <span class="section-number mb-8 block">Roadmap</span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-white mb-16">Next Steps</h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Step 1 -->
+                        <div
+                            class="p-8 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors">
+                            <div class="flex items-baseline justify-between mb-4">
+                                <span class="text-accent-default font-spacex text-xs tracking-widest uppercase">Step
+                                    01</span>
+                                <span class="text-white/20 font-serif text-2xl">01</span>
+                            </div>
+                            <h3 class="text-xl text-white font-medium mb-2">Style & Consistency</h3>
+                            <p class="text-white/60 leading-relaxed">Settle on the stylistic direction and lock in the
+                                level of character consistency required.</p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div
+                            class="p-8 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors">
+                            <div class="flex items-baseline justify-between mb-4">
+                                <span class="text-accent-default font-spacex text-xs tracking-widest uppercase">Step
+                                    02</span>
+                                <span class="text-white/20 font-serif text-2xl">02</span>
+                            </div>
+                            <h3 class="text-xl text-white font-medium mb-2">Episode Count</h3>
+                            <p class="text-white/60 leading-relaxed">Figure out the exact number of episodes to craft
+                                B-roll sequences for.</p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div
+                            class="p-8 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors">
+                            <div class="flex items-baseline justify-between mb-4">
+                                <span class="text-accent-default font-spacex text-xs tracking-widest uppercase">Step
+                                    03</span>
+                                <span class="text-white/20 font-serif text-2xl">03</span>
+                            </div>
+                            <h3 class="text-xl text-white font-medium mb-2">Timing & Pacing</h3>
+                            <p class="text-white/60 leading-relaxed">Establish the specific duration and length for
+                                every sequence.</p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div
+                            class="p-8 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors">
+                            <div class="flex items-baseline justify-between mb-4">
+                                <span class="text-accent-default font-spacex text-xs tracking-widest uppercase">Step
+                                    04</span>
+                                <span class="text-white/20 font-serif text-2xl">04</span>
+                            </div>
+                            <h3 class="text-xl text-white font-medium mb-2">Storyboarding</h3>
+                            <p class="text-white/60 leading-relaxed">Craft detailed storyboards for each of the approved
+                                episodes for later animation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Thank You Section -->
+            <div class="py-40 text-center reveal-on-scroll relative overflow-hidden">
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black via-zinc-950/20 to-transparent pointer-events-none">
+                </div>
+                <div class="relative z-10">
+                    <div class="w-16 h-[1px] bg-white/20 mx-auto mb-10"></div>
+                    <h2 class="text-4xl md:text-5xl font-serif mb-6 text-white tracking-tight">Thank You!</h2>
+                    <p class="text-white/40 uppercase tracking-[0.2em] text-xs font-medium">Laniameda • 2025
+                    </p>
+                </div>
+            </div>
+
+            </div>
+        </section>
+
+        <!-- Premium Lightbox -->
+
+        <div id="image-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <div class="modal-backdrop absolute inset-0 bg-black/95 backdrop-blur-3xl"></div>
+
+            <div class="modal-content relative z-10 w-full max-w-7xl max-h-[90vh] flex flex-col items-center">
+
+                <!-- Toolbar -->
+                <div class="absolute top-0 right-0 p-4 lg:p-0 lg:-top-16 lg:right-0 flex items-center gap-4">
+                    <a id="modal-download" href="#"
+                        class="glass-button p-3 rounded-full text-white/70 hover:text-white transition-colors"
+                        title="Download">
+                        <i data-lucide="download" class="w-5 h-5"></i>
+                    </a>
+                    <button id="modal-close"
+                        class="glass-button p-3 rounded-full text-white/70 hover:text-white transition-colors"
+                        title="Close">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <!-- Image Container -->
+                <div class="relative rounded-lg overflow-hidden shadow-2xl border border-white/10 bg-black">
+                    <img id="modal-image" src="" alt="View" class="max-w-full max-h-[85vh] object-contain block">
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="js/app.js"></script>
+</body>
+
+</html>
