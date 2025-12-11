@@ -149,93 +149,118 @@
 
             </div>
 
-            <!-- TABLE OF CONTENTS - Editorial List Style -->
-            <div id="toc" class="max-w-6xl mx-auto px-6 md:px-12 pb-32">
-
-                <!-- Two Column Layout -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 animate-reveal stagger-4">
-
-                    <!-- Left Column: Label -->
-                    <div class="lg:col-span-4">
-                        <span class="section-number">001 — Contents</span>
-                        <h2 class="text-2xl md:text-3xl font-serif mt-6 mb-4" style="color: var(--text-primary);">What's
-                            Inside</h2>
-                        <p class="text-base leading-relaxed" style="color: var(--text-secondary);">
-                        </p>
+            <!-- TABLE OF CONTENTS - Light Theme List Design -->
+            <div id="toc" class="relative bg-white text-black py-32 px-6 md:px-12">
+                <!-- Background Elements: Removing Grid, Adding Soft Color -->
+                <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                    <!-- Soft Coral/Pink Orb Top Right -->
+                    <div
+                        class="absolute -top-[10%] -right-[10%] w-[800px] h-[800px] bg-gradient-to-br from-[#FFD1C1] to-transparent rounded-full mix-blend-multiply filter blur-[80px] opacity-40">
                     </div>
+                    <!-- Soft Blue/Purple Orb Bottom Left -->
+                    <div
+                        class="absolute -bottom-[10%] -left-[10%] w-[600px] h-[600px] bg-gradient-to-tr from-[#E0E7FF] to-transparent rounded-full mix-blend-multiply filter blur-[80px] opacity-40">
+                    </div>
+                </div>
 
-                    <!-- Right Column: TOC List -->
-                    <div class="lg:col-span-8">
-                        <nav class="toc-editorial-list">
+                <div class="max-w-7xl mx-auto relative z-10">
 
-                            <!-- Item 1 -->
-                            <a href="#guidelines" class="toc-item group">
-                                <span class="toc-number">01</span>
-                                <div class="toc-content">
-                                    <span class="toc-title">Review Guidelines</span>
-                                    <span class="toc-desc">What to focus on during review</span>
-                                </div>
-                                <svg class="toc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </a>
+                    <!-- Two Column Layout: Title Left, List Right -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
-                            <!-- Item 2 -->
-                            <a href="#episodes" class="toc-item group">
-                                <span class="toc-number">02</span>
-                                <div class="toc-content">
-                                    <span class="toc-title">Episode Previews</span>
-                                    <span class="toc-desc">Visual direction options for a few episodes</span>
-                                </div>
-                                <svg class="toc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </a>
+                        <!-- Left Column: Header -->
+                        <div class="lg:col-span-4">
+                            <span
+                                class="inline-block py-1 px-3 border border-black text-xs font-bold uppercase tracking-widest mb-6">
+                                001 — Contents
+                            </span>
+                            <h2 class="text-5xl md:text-6xl font-serif text-black mb-6">
+                                What's<br>Inside
+                            </h2>
+                            <p class="text-lg font-light text-zinc-600">
+                                A guide to the presentation structure.
+                            </p>
+                        </div>
 
-                            <!-- Item 3 -->
-                            <a href="#appendix" class="toc-item group">
-                                <span class="toc-number">03</span>
-                                <div class="toc-content">
-                                    <span class="toc-title">CharacterConcept Art Style</span>
-                                    <span class="toc-desc">Abstract vs. realistic identity</span>
-                                </div>
-                                <svg class="toc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </a>
+                        <!-- Right Column: List -->
+                        <div class="lg:col-span-8">
+                            <div class="flex flex-col">
 
-                            <!-- Item 4 -->
-                            <a href="#conclusion" class="toc-item group">
-                                <span class="toc-number">04</span>
-                                <div class="toc-content">
-                                    <span class="toc-title">Strategic Directions</span>
-                                    <span class="toc-desc">Four proposed creative paths</span>
-                                </div>
-                            </a>
-                        </nav>
+                                <!-- Item 1 -->
+                                <a href="#guidelines"
+                                    class="group flex items-center py-10 border-b border-black/10 hover:border-black transition-colors duration-500 relative">
+                                    <span
+                                        class="text-sm font-bold uppercase tracking-widest w-16 text-black/40 group-hover:text-accent-coral transition-colors duration-300">01</span>
+                                    <div class="flex-1">
+                                        <h3
+                                            class="text-4xl md:text-5xl font-serif mb-2 text-black group-hover:text-accent-coral transition-colors duration-300">
+                                            Review Guidelines</h3>
+                                        <p
+                                            class="text-zinc-600 font-light group-hover:text-black transition-colors duration-300">
+                                            What to focus on, what to ignore, and how to provide feedback.</p>
+                                    </div>
+                                    <div
+                                        class="opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition-all duration-500 text-accent-coral pl-4">
+                                        <i data-lucide="arrow-right" class="w-8 h-8"></i>
+                                    </div>
+                                </a>
+
+                                <!-- Item 2 -->
+                                <a href="#episodes"
+                                    class="group flex items-center py-10 border-b border-black/10 hover:border-black transition-colors duration-500 relative">
+                                    <span
+                                        class="text-sm font-bold uppercase tracking-widest w-16 text-black/40 group-hover:text-accent-coral transition-colors duration-300">02</span>
+                                    <div class="flex-1">
+                                        <h3
+                                            class="text-4xl md:text-5xl font-serif mb-2 text-black group-hover:text-accent-coral transition-colors duration-300">
+                                            Episode Previews</h3>
+                                        <p
+                                            class="text-zinc-600 font-light group-hover:text-black transition-colors duration-300">
+                                            Visual direction options for specific key moments.</p>
+                                    </div>
+                                    <div
+                                        class="opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition-all duration-500 text-accent-coral pl-4">
+                                        <i data-lucide="arrow-right" class="w-8 h-8"></i>
+                                    </div>
+                                </a>
+
+                                <!-- Item 3 -->
+                                <a href="#conclusion"
+                                    class="group flex items-center py-10 border-b border-black/10 hover:border-black transition-colors duration-500 relative">
+                                    <span
+                                        class="text-sm font-bold uppercase tracking-widest w-16 text-black/40 group-hover:text-accent-coral transition-colors duration-300">03</span>
+                                    <div class="flex-1">
+                                        <h3
+                                            class="text-4xl md:text-5xl font-serif mb-2 text-black group-hover:text-accent-coral transition-colors duration-300">
+                                            Strategic Directions</h3>
+                                        <p
+                                            class="text-zinc-600 font-light group-hover:text-black transition-colors duration-300">
+                                            Four proposed creative paths for the series.</p>
+                                    </div>
+                                    <div
+                                        class="opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition-all duration-500 text-accent-coral pl-4">
+                                        <i data-lucide="arrow-right" class="w-8 h-8"></i>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
         </section>
-        <!-- REVIEW GUIDELINES Section - Light Theme -->
-        <section id="guidelines" class="py-32 px-6 md:px-12">
+        <!-- REVIEW GUIDELINES Section - Reverted to Editorial Layout -->
+        <section id="guidelines" class="py-32 px-6 md:px-12 relative">
             <div class="max-w-6xl mx-auto">
-
                 <!-- Section Header -->
                 <div class="mb-16 reveal-on-scroll">
                     <span class="section-number">002 — Guidelines</span>
-                    <h2 class="text-4xl md:text-5xl font-serif mt-6 mb-6" style="color: var(--text-primary);">What to
-                        Evaluate</h2>
-                    <p class="text-lg max-w-2xl font-light" style="color: var(--text-secondary);">Focus on creative
-                        direction. Ignore technical polish for now.</p>
+                    <h2 class="text-4xl md:text-5xl font-serif mt-6 mb-6 text-white">What to Evaluate</h2>
+                    <p class="text-lg max-w-2xl font-light text-zinc-400">Focus on creative direction. Ignore technical
+                        polish for now.</p>
                 </div>
-
-                <!-- Horizontal Divider -->
-                <div class="w-full h-px mb-16 reveal-on-scroll" style="background: var(--border-light);"></div>
 
                 <!-- Two Column Layout -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 reveal-on-scroll">
@@ -243,40 +268,48 @@
                     <!-- Focus On -->
                     <div>
                         <div class="flex items-start gap-4 mb-8">
-                            <div class="accent-bar"></div>
+                            <div class="w-1 bg-accent-coral self-stretch rounded-full"></div>
                             <div>
-                                <h3 class="text-2xl font-serif mb-2" style="color: var(--text-primary);">Focus On</h3>
-                                <p class="text-sm" style="color: var(--text-muted);">Key areas requiring your feedback
-                                </p>
+                                <h3 class="text-2xl font-serif mb-2 text-white">Focus On</h3>
+                                <p class="text-sm text-zinc-500">Key areas requiring your feedback</p>
                             </div>
                         </div>
-                        <ul class="space-y-5 pl-1">
-                            <li class="flex items-start gap-4">
-                                <span class="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
-                                    style="background: var(--accent-coral);"></span>
-                                <span style="color: var(--text-primary);">Color palette and overall mood</span>
+                        <ul class="space-y-6">
+                            <li class="flex items-start gap-4 group">
+                                <span
+                                    class="mt-2 w-2 h-2 rounded-full shrink-0 bg-accent-coral shadow-[0_0_10px_rgba(224,120,80,0.5)] group-hover:scale-125 transition-transform duration-300"></span>
+                                <div>
+                                    <span class="text-lg text-zinc-100 block mb-1">Color palette and overall mood</span>
+                                    <span class="text-sm text-zinc-500">Does it feel right for the story
+                                        emotions?</span>
+                                </div>
                             </li>
-                            <li class="flex items-start gap-4">
-                                <span class="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
-                                    style="background: var(--accent-coral);"></span>
-                                <span style="color: var(--text-primary);">Camera angles and framing choices</span>
+                            <li class="flex items-start gap-4 group">
+                                <span
+                                    class="mt-2 w-2 h-2 rounded-full shrink-0 bg-accent-coral shadow-[0_0_10px_rgba(224,120,80,0.5)] group-hover:scale-125 transition-transform duration-300"></span>
+                                <div>
+                                    <span class="text-lg text-zinc-100 block mb-1">Camera angles and framing
+                                        choices</span>
+                                    <span class="text-sm text-zinc-500">Cinematic language and composition.</span>
+                                </div>
                             </li>
-                            <li class="flex items-start gap-4">
-                                <span class="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
-                                    style="background: var(--accent-coral);"></span>
-                                <span style="color: var(--text-primary);">Storytelling elements and narrative
-                                    impact</span>
+                            <li class="flex items-start gap-4 group">
+                                <span
+                                    class="mt-2 w-2 h-2 rounded-full shrink-0 bg-accent-coral shadow-[0_0_10px_rgba(224,120,80,0.5)] group-hover:scale-125 transition-transform duration-300"></span>
+                                <div>
+                                    <span class="text-lg text-zinc-100 block mb-1">Storytelling elements and narrative
+                                        impact</span>
+                                    <span class="text-sm text-zinc-500">Clarity of the visual metaphors.</span>
+                                </div>
                             </li>
-                            <li class="flex items-start gap-4">
-                                <span class="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
-                                    style="background: var(--accent-coral);"></span>
-                                <span style="color: var(--text-primary);">"Is this scene worth developing
-                                    further?"</span>
-                            </li>
-                            <li class="flex items-start gap-4">
-                                <span class="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
-                                    style="background: var(--accent-coral);"></span>
-                                <span style="color: var(--text-primary);">"Art direction and animation style"</span>
+                            <li class="flex items-start gap-4 group">
+                                <span
+                                    class="mt-2 w-2 h-2 rounded-full shrink-0 bg-accent-coral shadow-[0_0_10px_rgba(224,120,80,0.5)] group-hover:scale-125 transition-transform duration-300"></span>
+                                <div>
+                                    <span class="text-lg text-zinc-100 block mb-1">Character Concept Direction</span>
+                                    <span class="text-sm text-zinc-500">General vibe of the characters (not
+                                        faces).</span>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -284,32 +317,33 @@
                     <!-- Ignore For Now -->
                     <div>
                         <div class="flex items-start gap-4 mb-8">
-                            <div class="accent-bar" style="opacity: 0.3;"></div>
+                            <div class="w-1 bg-zinc-700 self-stretch rounded-full"></div>
                             <div>
-                                <h3 class="text-2xl font-serif mb-2" style="color: var(--text-secondary);">Ignore For
-                                    Now</h3>
-                                <p class="text-sm" style="color: var(--text-muted);">These will be addressed in
-                                    production</p>
+                                <h3 class="text-2xl font-serif mb-2 text-zinc-500">Ignore For Now</h3>
+                                <p class="text-sm text-zinc-600">These will be addressed in production</p>
                             </div>
                         </div>
-                        <ul class="space-y-5 pl-1">
-                            <li class="flex items-start gap-4" style="color: var(--text-muted);">
-                                <span class="mt-2 w-1.5 h-1.5 bg-zinc-300 rounded-full shrink-0"></span>
-                                <span class="line-through">Minor consistency between shots</span>
+                        <ul class="space-y-6 pl-1 opacity-60 hover:opacity-100 transition-opacity duration-500">
+                            <li class="flex items-start gap-4">
+                                <span class="mt-2 w-1.5 h-1.5 bg-zinc-600 rounded-full shrink-0"></span>
+                                <span class="text-zinc-500 line-through">Minor consistency between shots</span>
                             </li>
-                            <li class="flex items-start gap-4" style="color: var(--text-muted);">
-                                <span class="mt-2 w-1.5 h-1.5 bg-zinc-300 rounded-full shrink-0"></span>
-                                <span class="line-through">Final polish and refinement</span>
+                            <li class="flex items-start gap-4">
+                                <span class="mt-2 w-1.5 h-1.5 bg-zinc-600 rounded-full shrink-0"></span>
+                                <span class="text-zinc-500 line-through">Final polish and high-res rendering</span>
                             </li>
-                            <li class="flex items-start gap-4" style="color: var(--text-muted);">
-                                <span class="mt-2 w-1.5 h-1.5 bg-zinc-300 rounded-full shrink-0"></span>
-                                <span class="line-through">Technical artifacts (these are iteratable)</span>
+                            <li class="flex items-start gap-4">
+                                <span class="mt-2 w-1.5 h-1.5 bg-zinc-600 rounded-full shrink-0"></span>
+                                <span class="text-zinc-500 line-through">Technical montage timing</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="mt-2 w-1.5 h-1.5 bg-zinc-600 rounded-full shrink-0"></span>
+                                <span class="text-zinc-500 line-through">Audio mixing and sound design</span>
                             </li>
                         </ul>
                     </div>
 
                 </div>
-
             </div>
         </section>
 
